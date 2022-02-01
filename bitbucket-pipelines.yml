@@ -9,6 +9,7 @@ pipelines:
               - maven
             script:
               - mvn -B verify --file pom.xml
+              - mvn test
             after-script:
               - pipe: atlassian/checkstyle-report:0.2.0
         - step:

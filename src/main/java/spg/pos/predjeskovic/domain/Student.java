@@ -1,6 +1,7 @@
 package spg.pos.predjeskovic.domain;
 
 import lombok.*;
+import org.springframework.context.annotation.Bean;
 
 import javax.persistence.*;
 import java.util.ArrayList;
