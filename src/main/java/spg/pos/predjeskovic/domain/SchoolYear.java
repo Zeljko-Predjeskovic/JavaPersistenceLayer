@@ -31,9 +31,11 @@ public class SchoolYear extends CustomAbstractPersistable{
     @Getter @Setter
     private LocalDate secondTermEnd;
 
+    @Getter
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<OptionalTopic> optionalTopicList;
 
+    @Getter
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<SchoolClassInYear> schoolClassInYearList;
 

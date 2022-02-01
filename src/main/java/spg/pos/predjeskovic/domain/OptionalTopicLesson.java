@@ -29,15 +29,19 @@ public class OptionalTopicLesson extends CustomAbstractPersistable{
     @Enumerated(EnumType.STRING)
     private TopicType topicType;
 
+    @Getter
     @ManyToOne(cascade = CascadeType.PERSIST) @JoinColumn(name = "optional_topic_id")
     private OptionalTopic optionalTopic;
 
+    @Getter
     @ManyToOne(cascade = CascadeType.PERSIST) @JoinColumn(name = "school_year_id")
     private SchoolYear schoolYear;
 
+    @Getter
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Enrollment> enrollmentList;
 
+    @Getter
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Assignment> assignmentList;
 

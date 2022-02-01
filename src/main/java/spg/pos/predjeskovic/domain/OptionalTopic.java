@@ -20,6 +20,7 @@ public class OptionalTopic extends CustomAbstractPersistable{
     @Getter @Setter
     private String name;
 
+    @Getter
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<OptionalTopicLesson> optionalTopicLessonList;
 

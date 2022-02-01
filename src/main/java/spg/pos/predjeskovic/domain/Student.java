@@ -23,12 +23,15 @@ public class Student extends CustomAbstractPersistable{
     @Getter @Setter
     private String lastName;
 
+    @Getter
     @ManyToOne(cascade = CascadeType.PERSIST) @JoinColumn(name = "school_class_in_year_id")
     private SchoolClassInYear schoolClassInYear;
 
+    @Getter
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Assignment> assignmentList;
 
+    @Getter
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Enrollment> enrollmentList;
 
