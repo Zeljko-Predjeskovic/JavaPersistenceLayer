@@ -23,7 +23,7 @@ public class Student extends CustomAbstractPersistable{
     @Getter @Setter
     private String lastName;
 
-    @Getter
+    @Getter @Setter
     @ManyToOne(cascade = CascadeType.PERSIST) @JoinColumn(name = "school_class_in_year_id")
     private SchoolClassInYear schoolClassInYear;
 

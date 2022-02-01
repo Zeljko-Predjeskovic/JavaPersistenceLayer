@@ -15,7 +15,7 @@ public class SchoolClassInYear extends CustomAbstractPersistable{
     @Getter @Setter
     private String name;
 
-    @Getter
+    @Getter @Setter
     @ManyToOne(cascade = CascadeType.PERSIST) @JoinColumn(name = "school_year_id")
     private SchoolYear schoolYear;
 

@@ -22,11 +22,11 @@ public class Enrollment extends CustomAbstractPersistable{
     @Getter @Setter
     private String note;
 
-    @Getter
+    @Getter @Setter
     @ManyToOne(cascade = CascadeType.PERSIST) @JoinColumn(name = "student_id")
     private Student student;
 
-    @Getter
+    @Getter @Setter
     @ManyToOne(cascade = CascadeType.PERSIST) @JoinColumn(name = "optional_topic_lesson_id")
     private OptionalTopicLesson optionalTopicLesson;
 }
