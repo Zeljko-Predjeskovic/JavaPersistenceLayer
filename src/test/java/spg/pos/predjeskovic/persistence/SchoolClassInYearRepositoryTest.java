@@ -23,12 +23,13 @@ public class SchoolClassInYearRepositoryTest {
     /**
      * UC002 Create a class with students
      *
-     * Create the optional topic "Historischer Schwertkampf " for school year 2021/2022 as"Freigegenstand".
+     * Create a school class "4AHIF" in school year 2021/2022 with five students.
      *
      * */
     @Test
     void uc002AssertSaveSchoolClassWithStudents(){
 
+        // Create a school class "4AHIF" in school year 2021/2022 with five students.
         SchoolClassInYear schoolClass = SchoolClassInYear.builder()
                 .name("4AHIF")
                 .schoolYear(SchoolYear.builder()

@@ -27,6 +27,8 @@ public class OptionalTopicRepositoryTest {
      * */
     @Test
     void uc001AssertSaveOptionalTopic(){
+
+        //Create the optional topic "Historischer Schwertkampf " for school year 2021/2022 as"Freigegenstand".
         OptionalTopic optionalTopic =
                 OptionalTopic.builder().topicId(UUID.randomUUID().toString())
                         .name("Historischer Schwertkampf")
