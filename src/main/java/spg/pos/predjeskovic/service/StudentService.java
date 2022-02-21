@@ -28,4 +28,8 @@ public class StudentService {
                 .map(f->new StudentDto(f.getStudentId(),f.getFirstName(),f.getLastName()))
                 .collect(Collectors.toList());
     }
+
+    public int getPages(int maxSize){
+        return  studentRepository.findAll(Pageable.ofSize(maxSize)).getTotalPages();
+    }
 }

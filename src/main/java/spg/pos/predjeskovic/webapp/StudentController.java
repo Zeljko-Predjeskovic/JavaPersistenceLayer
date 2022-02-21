@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import spg.pos.predjeskovic.service.StudentService;
 
 
@@ -26,17 +27,14 @@ public class StudentController {
     }
 
     @GetMapping
-    public String findAllStudents(Model model,@RequestParam(value="page") int page){
-
-        if(page==0){
-            page = 1;
-        }
+    public String findAllStudents(Model model, @RequestParam int page){
+        model.addAttribute("title","Schüler");
 
         Pageable pageable = PageRequest.of(page,SIZE);
-
         var students = studentService.findAllStudents(pageable);
-
         model.addAttribute("students",students);
+
+        model.addAttribute("pageSize", studentService.getPages(SIZE));
 
         return "students";
     }

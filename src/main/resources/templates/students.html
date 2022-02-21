@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="header">
-    <meta charset="UTF-8">
-    <title>Schülerverwaltung</title>
+
+<head th:replace="index :: header">
 </head>
+
 <body>
+
+<!-- Navbar -->
+<nav th:replace="index :: nav"></nav>
+<!-- Navbar -->
+
 <h1>Students</h1>
+<p></p>
+<div>Seiten:</div>
+<div>
+    <label th:each="i : ${#numbers.sequence(0, pageSize - 1)}">
+        <a th:href="'/students?page=' + ${i}" th:text="${i+1}"></a>
+    </label>
+</div>
+<p></p>
 <table>
     <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
             <th></th>
+            <th>Firstname</th>
+            <th>Lastname</th>
             <th></th>
         </tr>
     </thead>
-    <tr th:each="student : ${students}">
-        <td th:text="${student.studentId()}"></td>
-        <td th:text="${student.firstName() + ' ' + student.lastName()}"></td>
-    </tr>
     <tbody>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.studentId()}"></td>
+            <td></td>
+            <td th:text="${student.firstName()}"></td>
+            <td th:text="${student.lastName()}"></td>
+            <td></td>
+        </tr>
 
     </tbody>
 </table>
+<p></p>
+
 </body>
 </html>
