@@ -31,14 +31,16 @@
     </thead>
     <tbody>
         <tr th:each="student : ${students}">
-            <td th:text="${student.studentId()}"></td>
+            <td th:text="${student.getStudentId()}"></td>
             <td></td>
-            <td th:text="${student.firstName()}"></td>
-            <td th:text="${student.lastName()}"></td>
+            <td th:text="${student.getFirstName()}"></td>
+            <td th:text="${student.getLastName()}"></td>
             <td></td>
         </tr>
 
     </tbody>
+
+    <a href="/students/create">erstellen</a>
 </table>
 <p></p>
 

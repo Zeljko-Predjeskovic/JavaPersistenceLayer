@@ -1,6 +1,6 @@
 package spg.pos.predjeskovic;
 
-import com.github.javafaker.Faker;
+import lombok.extern.log4j.Log4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @SpringBootApplication
+@Log4j
 public class Application {
 
     public static void main(String[] args) {
@@ -22,7 +23,6 @@ public class Application {
 
     @Bean
     CommandLineRunner runner(StudentRepository studentRepository) {
-
         return args -> {
 
 

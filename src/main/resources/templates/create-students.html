@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: header"></head>
+<body>
+<h1>Schüler erstellen</h1>
+
+<form th:action="${'/students/create'}" method="post" th:object="${student}">
+    <div class="input-group mb-3">
+        <span class="input-group-text">First Name</span>
+        <input th:field="*{firstName}" type="text" class="form-control" placeholder="First Name"
+               aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text">Last Name</span>
+        <input th:field="*{lastName}" type="text" class="form-control"  placeholder="Last Name"
+               aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+    <div class="input-group mb-3">
+        <span class="input-group-text">Student Id</span>
+        <input th:field="*{studentId}" type="text" class="form-control"  placeholder="StudentId"
+               aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+
+
+    <div style="margin-top: 7%">
+        <input type="submit" class="btn btn-light" style="color: #1b59b5" value="erstellen"/>
+    </div>
+</form>
+
+</body>
+</html>

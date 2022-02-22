@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import spg.pos.predjeskovic.domain.Student;
 import spg.pos.predjeskovic.persistence.StudentRepository;
 
 
@@ -31,5 +32,13 @@ public class StudentService {
 
     public int getPages(int maxSize){
         return  studentRepository.findAll(Pageable.ofSize(maxSize)).getTotalPages();
+    }
+
+    public void save(StudentDto studentDto){
+        var student = Student.builder().studentId(studentDto.getStudentId())
+                .firstName(studentDto.getFirstName())
+                .lastName(studentDto.getLastName()).build();
+
+        studentRepository.save(student);
     }
 }

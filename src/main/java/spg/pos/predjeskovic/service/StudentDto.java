@@ -1,7 +1,15 @@
 package spg.pos.predjeskovic.service;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-public record StudentDto(String studentId,String firstName,String lastName) {
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+public class StudentDto {
+
+
+    private String studentId;
+    private String firstName;
+    private String lastName;
 }

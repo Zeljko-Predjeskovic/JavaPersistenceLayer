@@ -5,10 +5,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import spg.pos.predjeskovic.service.StudentDto;
 import spg.pos.predjeskovic.service.StudentService;
 
 
@@ -39,4 +38,19 @@ public class StudentController {
         return "students";
     }
 
+
+    @GetMapping(path="/create")
+    public String CreateStudent(Model model){
+        model.addAttribute("title", "Erstellen");
+
+        model.addAttribute("student", new StudentDto());
+
+        return "create-students";
+    }
+
+    @PostMapping(path="/create")
+    public String creatAction(@ModelAttribute StudentDto studentDto){
+        studentService.save(studentDto);
+        return "redirect:/students?page=0";
+    }
 }
