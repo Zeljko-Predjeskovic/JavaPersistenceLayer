@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: header">
+</head>
+<body>
+<h1 >Bearbeiten</h1>
+
+<form method="post" th:object="${student}" th:action="${'/students/edit'}">
+
+    <label th:text="${'Id: '}"></label>
+    <input th:field="*{id}" th:placeholder="${student.getId()}">
+
+    <label>Student Id</label>
+    <input type="text" th:field="*{studentId}" th:placeholder="${student.getStudentId()}">
+    <label>Student Id</label>
+    <input type="text" th:field="*{firstName}" th:placeholder="${student.getFirstName()}">
+    <label>Student Id</label>
+    <input type="text" th:field="*{lastName}" th:placeholder="${student.getLastName()}">
+
+    <input type="submit" value="verändern">
+</form>
+</body>
+</html>

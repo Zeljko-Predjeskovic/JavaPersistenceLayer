@@ -49,8 +49,26 @@ public class StudentController {
     }
 
     @PostMapping(path="/create")
-    public String creatAction(@ModelAttribute StudentDto studentDto){
+    public String createAction(@ModelAttribute StudentDto studentDto){
         studentService.save(studentDto);
+        return "redirect:/students?page=0";
+    }
+
+    @GetMapping(path = "/edit")
+    public String editStudent(Model model, @RequestParam Long id){
+        model.addAttribute("title", "edit");
+
+        var student = studentService.findById(id);
+
+        model.addAttribute("student",student);
+
+        return "edit-student";
+    }
+
+    @PostMapping(path = "/edit")
+    public String editStudent(@ModelAttribute StudentDto studentDto){
+        studentService.replace(studentDto);
+
         return "redirect:/students?page=0";
     }
 }

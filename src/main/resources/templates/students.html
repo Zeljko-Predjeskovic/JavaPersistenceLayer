@@ -35,7 +35,7 @@
             <td></td>
             <td th:text="${student.getFirstName()}"></td>
             <td th:text="${student.getLastName()}"></td>
-            <td></td>
+            <td><a th:href="${'/students/edit/?id='+student.getId()}" >bearbeiten</a></td>
         </tr>
 
     </tbody>

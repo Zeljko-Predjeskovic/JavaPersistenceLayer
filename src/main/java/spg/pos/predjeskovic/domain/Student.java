@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 public class Student extends CustomAbstractPersistable{
 
-    @Getter
+    @Getter @Setter
     private String studentId;
 
     @Getter @Setter
