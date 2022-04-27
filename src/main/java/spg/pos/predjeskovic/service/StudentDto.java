@@ -21,4 +21,21 @@ public class StudentDto {
 
         return student;
     }
+
+    public static StudentDto fromStudent(Student student){
+        return new StudentDto(student.getId(),
+                student.getStudentId(),
+                student.getFirstName(),
+                student.getLastName());
+    }
+
+
+    public Student toStudent(){
+        return Student.builder()
+                .studentId(studentId)
+                .firstName(firstName)
+                .lastName(lastName)
+                .build();
+    }
+
 }
