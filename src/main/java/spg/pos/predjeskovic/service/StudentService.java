@@ -26,8 +26,8 @@ public class StudentService {
     }
 
     public List<StudentDto> findAllStudents(Pageable pageable){
-       return studentRepository.findAll(pageable).stream()
-                .map(f->new StudentDto(f.getId(),f.getStudentId(),f.getFirstName(),f.getLastName()))
+       return StreamSupport.stream(studentRepository.findAll().spliterator(), false)
+                .map(StudentDto::fromStudent)
                 .collect(Collectors.toList());
     }
 
@@ -35,27 +35,27 @@ public class StudentService {
         return  studentRepository.findAll(Pageable.ofSize(maxSize)).getTotalPages();
     }
 
-    public void save(StudentDto studentDto){
-        var student = Student.builder()
-                .studentId(studentDto.getStudentId())
-                .firstName(studentDto.getFirstName())
-                .lastName(studentDto.getLastName()).build();
-
-
-        studentRepository.save(student);
+    public StudentDto save(StudentDto studentDto){
+        var student = Optional.ofNullable(studentDto)
+                .map(StudentDto::toStudent)
+                .map(studentRepository::save)
+                .map(StudentDto::fromStudent)
+                .orElseGet(null);
+        return student;
     }
 
     public StudentDto findById(Long id){
-        var student = studentRepository.findById(id).get();
-        return new StudentDto(student.getId(),student.getStudentId(),student.getFirstName(),student.getLastName());
+        return studentRepository.findById(id)
+                .map(StudentDto::fromStudent)
+                .orElse(null);
     }
 
     public StudentDto replace(StudentDto studentDto){
-        return Optional.ofNullable(studentDto)
-                .flatMap(it -> studentRepository.findById(it.getId()))
+        return Optional.ofNullable(studentDto.getId())
+                .flatMap(it -> studentRepository.findById(it))
                 .map(student -> studentDto.mergeWith(student))
-                .map(studentRepository :: save)
-                .map(it -> new StudentDto(it.getId(),it.getStudentId(),it.getFirstName(),it.getLastName()))
+                .map(studentRepository::save)
+                .map(StudentDto::fromStudent)
                 .orElse(null);
     }
 
