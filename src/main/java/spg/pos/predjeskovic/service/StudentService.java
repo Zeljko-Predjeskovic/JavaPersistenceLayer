@@ -26,7 +26,7 @@ public class StudentService {
     }
 
     public List<StudentDto> findAllStudents(Pageable pageable){
-       return StreamSupport.stream(studentRepository.findAll().spliterator(), false)
+       return StreamSupport.stream(studentRepository.findAll(pageable).spliterator(), false)
                 .map(StudentDto::fromStudent)
                 .collect(Collectors.toList());
     }
