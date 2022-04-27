@@ -58,4 +58,8 @@ public class StudentService {
                 .map(it -> new StudentDto(it.getId(),it.getStudentId(),it.getFirstName(),it.getLastName()))
                 .orElse(null);
     }
+
+    public void remove(Long id){
+        studentRepository.deleteById(id);
+    }
 }
